@@ -1,6 +1,5 @@
 package com.empwage;
 
-
 class Attendance{
 	public static int attendance() {
 		int att=(int) Math.floor(Math.random()*2);
@@ -50,10 +49,25 @@ class Wages extends Attendance{
 		}
 	}
 }
+class MonthlyWage extends EmployeeWageBuilder{
+	public static int monthlyWage;
+	public static void monthlyWage() {
+			if(empcheck==1) {
+				monthlyWage=wage_per_hr*fulltime_hrs*num_of_days;
+				System.out.println("Monthly wage of full time  employee="+monthlyWage);
+			}else {
+				monthlyWage=wage_per_hr*parttime_hrs*num_of_days;
+				System.out.println("Monthly wage of part time employee"+monthlyWage);
+			}
+	}
+}
+
 public class EmployeeWageBuilder {
 	final static int wage_per_hr=20;
 	final static int fulltime_hrs=8;
 	final static int parttime_hrs=4;
+	final static int num_of_days=20;
+	final static int total_hrs=100;
 	final static int full_time=1;
 	final static int part_time=2;
 	final static int empcheck=(int) Math.floor(Math.random()*2+1);
@@ -66,7 +80,7 @@ public class EmployeeWageBuilder {
 		DailyWage.wage_calculator();
 		EmpType.type();
 		Wages.dailywage();
-		
+		MonthlyWage.monthlyWage();
 	}
 
 }
