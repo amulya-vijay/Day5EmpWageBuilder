@@ -51,14 +51,26 @@ class Wages extends Attendance{
 }
 class MonthlyWage extends EmployeeWageBuilder{
 	public static int monthlyWage;
+	static int emphrs;
 	public static void monthlyWage() {
+		int totalhrs=0;
+		int totaldays=0;
+		while(totalhrs<=total_hrs && totaldays<=num_of_days) {
 			if(empcheck==1) {
-				monthlyWage=wage_per_hr*fulltime_hrs*num_of_days;
-				System.out.println("Monthly wage of full time  employee="+monthlyWage);
+				emphrs=8;
+				monthlyWage=wage_per_hr*fulltime_hrs*totaldays;
+				System.out.println("[FT]Day"+totaldays+" : "+monthlyWage);
+				totalhrs=totalhrs+emphrs;
 			}else {
-				monthlyWage=wage_per_hr*parttime_hrs*num_of_days;
-				System.out.println("Monthly wage of part time employee"+monthlyWage);
+				emphrs=4;	
+				monthlyWage=wage_per_hr*parttime_hrs*totaldays;
+				System.out.println("[PT]Day"+totaldays+" : "+monthlyWage);
+				totalhrs=totalhrs+emphrs;
 			}
+			totaldays++;
+		}
+		System.out.println("Total working hours="+totalhrs);
+		System.out.println("Total working days="+totaldays);
 	}
 }
 
